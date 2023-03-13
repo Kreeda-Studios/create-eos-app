@@ -2,7 +2,7 @@
 Takes care of initialising an [express-on-steroids](https://github.com/Kreeda-Studios/express-on-steroids) project.
 
 Just do
-> npx \<@npmusername/create-eos-app> test_api
+> npx create-eos-app test_api
 
 and a new project directory `test_api` will be created containing all the necessary code for an express-on-steroids package.
 
