@@ -16,11 +16,19 @@ const gitUrl = "https://github.com/Kreeda-Studios/express-on-steroids.git";
 /**
  * @type {String}
  */
-const targetProjectName = yargs.argv._[0] || "express-on-steroids";
+const targetProjectName = sanitize(yargs.argv._[0]) || "express-on-steroids";
 
-if (targetProjectName.trim() === "*") {
-  console.log(targetProjectName, " is an invalid project name. Aborting...");
-  process.exit();
+/**
+ *
+ * @param {String} input
+ */
+function sanitize(input) {
+  const alphabetRegex = /^[a-zA-Z./\\]+$/;
+  if (!alphabetRegex.test(input)) {
+    throw new Error("please provide valid project name.");
+  }
+
+  return input;
 }
 
 function cleanup() {

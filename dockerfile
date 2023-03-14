@@ -4,4 +4,4 @@ RUN ["apk", "add", "git"]
 COPY package*.json ./
 RUN ["npm", "install"]
 COPY . .
-CMD ["npx", ".", "test_api"]
+CMD ["npx", "."]
