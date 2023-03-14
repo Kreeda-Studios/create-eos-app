@@ -12,7 +12,17 @@ const yargs = require("yargs")
 const args = yargs.argv
 // const gitUrl = "https://github.com/facebook/create-react-app.git";
 const gitUrl = "https://github.com/Kreeda-Studios/express-on-steroids.git";
+/**
+ * @type {String}
+ */
 const targetProjectName = yargs.argv._[0] || "express-on-steroids";
+console.log(process.argv);
+console.log(yargs.argv)
+console.log("tpn", targetProjectName)
+if (targetProjectName.trim() === "*") {
+  console.log(targetProjectName, " is an invalid project name. Aborting...");
+  process.exit();
+}
 
 function cleanup() {
   console.log("cleaning up...");
@@ -52,12 +62,14 @@ function npmInstall() {
 }
 
 function cloneRepo() {
+  console.log()
   console.log("cloning eos");
   const result = child_process.execSync(
     `git clone ${gitUrl} ${targetProjectName}`
-  );
+    );
   console.log("clone success");
   console.log(result.toString());
+  console.log()
 }
 
 function renameProject() {
@@ -86,7 +98,12 @@ function renameProject() {
   }
 }
 function openWithCode() {
-  child_process.execSync(`code ${path.join(".", targetProjectName)}`);
+  console.log("opening with code")
+  try {
+    child_process.execSync(`code ${path.join(".", targetProjectName)}`);
+  } catch (error) {
+    console.error("failed to open project with code...")
+  }
 }
 
 process.on("SIGINT", handleSigint);
