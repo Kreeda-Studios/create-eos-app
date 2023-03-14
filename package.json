@@ -1,16 +1,23 @@
 {
-  "name": "create-eos-app",
-  "version": "1.0.4",
+  "name": "@kreedalabs/create-eos-app",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": "./app.js",
-  "keywords": [],
+  "keywords": [
+    "kreedalabs",
+    "yipli",
+    "playyipli"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "yargs": "^17.7.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
